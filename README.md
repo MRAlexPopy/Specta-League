@@ -16,11 +16,6 @@ Inspiratie: jocurile RPG clasice turn-based si auto-battlers.
 Jocul se compileaza cu `cmake -S . -B build && cmake --build build`. Apoi rulezi `./build/oop`.
 Tastezi optiunea numerica corespunzatoare din meniu si apesi Enter pentru a echipa eroi, a vizualiza inventarul sau a initia o lupta.
 
-## Controls
-* tastatura numerica pentru alegerea optiunii curente in meniu
-* Enter confirma alegerea
-
-## Resurse:
 | Laborant  | Link template                                |
 |-----------|----------------------------------------------|
 | Dragoș B  | https://github.com/Ionnier/oop-template      |
@@ -28,6 +23,7 @@ Tastezi optiunea numerica corespunzatoare din meniu si apesi Enter pentru a echi
 | Marius MC | https://github.com/mcmarius/oop-template     |
 
 ## Instrucțiuni de compilare
+
 Proiectul este configurat cu CMake.
 
 Instrucțiuni pentru terminal:
@@ -36,132 +32,84 @@ Instrucțiuni pentru terminal:
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 # sau ./scripts/cmake.sh configure
-Sau pe Windows cu GCC:
+```
 
-Bash
+Sau pe Windows cu GCC:
+```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G Ninja
 # sau ./scripts/cmake.sh configure -g Ninja
+```
+
 La acest pas putem cere să generăm fișiere de proiect pentru diverse medii de lucru.
 
-Cerințe obligatorii
+## Cerințe obligatorii
+
 Nerespectarea duce la nepunctarea proiectului
 
-[x] programul va fi scris în C++
+  - programul va fi scris în C++
+  - programul va avea un meniu interactiv (doar pentru ilustrarea funcționalității)
+  - programul nu are erori de compilare
+  - fară variabile globale
+  - datele membre private(sau protected)
+  - GitHub Actions trecute
+  - commit-uri pe Git adecvate si punctuale
+  - folosirea a funcționalităților limbajului fără sens
+  - folosirea a funcționlităților limbajului cu scopul de a încălca "legal" o altă regulă
+      - folosirea excesivă a claselor friend
+      - folosirea excesviă a elementelor statice
+  - lipsa separarea implementarii de definitie
 
-[x] programul va avea un meniu interactiv (doar pentru ilustrarea funcționalității)
+## Cerințe
+- pentru fiecare cerință (sau subcerință) neîndeplinită se scade **1** punct
+- [] definirea a minim **2-3 ieararhii de clase** care sa interactioneze in cadrul temei alese (fie prin compunere, agregare sau doar sa apeleze metodele celeilalte intr-un mod logic)
+  - minim o clasa cu:
+    - [x] constructori de inițializare [*](https://github.com/Ionnier/poo/tree/main/labs/L02#crearea-obiectelor)
+    - [x] constructor supraîncărcat [*](https://github.com/Ionnier/poo/tree/main/labs/L02#supra%C3%AEnc%C4%83rcarea-func%C8%9Biilor)
+    - [x] constructori de copiere [*](https://github.com/Ionnier/poo/tree/main/labs/L02#crearea-obiectelor)
+    - [x] `operator=` de copiere [*](https://github.com/Ionnier/poo/tree/main/labs/L02#supra%C3%AEnc%C4%83rcarea-operatorilor)
+    - [x] destructor [*](https://github.com/Ionnier/poo/tree/main/labs/L02#crearea-obiectelor)
+    - [x] `operator<<` pentru afișare (std::ostream) [*](https://github.com/Ionnier/poo/blob/main/labs/L02/fractie.cpp#L123)
+    - [x] `operator>>` pentru citire (std::istream) [*](https://github.com/Ionnier/poo/blob/main/labs/L02/fractie.cpp#L128)
+    - [x] alt operator supraîncărcat ca funcție membră [*](https://github.com/Ionnier/poo/blob/main/labs/L02/fractie.cpp#L32)
+    - [x] alt operator supraîncărcat ca funcție non-membră [*](https://github.com/Ionnier/poo/blob/main/labs/L02/fractie.cpp#L39) - nu neaparat ca friend
+  - in derivate
+      - [x] implementarea funcționalităților alese prin [upcast](https://github.com/Ionnier/poo/tree/main/labs/L04#solu%C8%9Bie-func%C8%9Bii-virtuale-late-binding) și [downcast](https://github.com/Ionnier/poo/tree/main/labs/L04#smarter-downcast-dynamic-cast)
+        - aceasta va fi făcută prin **2-3** metode specifice temei alese
+        - funcțiile pentru citire / afișare sau destructorul nu sunt incluse deși o să trebuiască să le implementați 
+      - [x] apelarea constructorului din clasa de bază din [constructori din derivate](https://github.com/Ionnier/poo/tree/main/labs/L04#comportamentul-constructorului-la-derivare)
+      - [x] suprascris [cc](https://github.com/Ionnier/poo/tree/main/labs/L04#comportamentul-constructorului-de-copiere-la-derivare)/op= pentru copieri/atribuiri corecte
+      - [x] destructor [virtual](https://github.com/Ionnier/poo/tree/main/labs/L04#solu%C8%9Bie-func%C8%9Bii-virtuale-late-binding)
+  - pentru celelalte clase se va definii doar ce e nevoie
+  - minim o ierarhie mai dezvoltata (cu 2-3 clase dintr-o clasa de baza)
+  - ierarhie de clasa se considera si daca exista doar o clasa de bază însă care nu moștenește dintr-o clasă din altă ierarhie
+- [x] cât mai multe `const` [*](https://github.com/Ionnier/poo/tree/main/labs/L04#reminder-const-everywhere)
+- [x] funcții și atribute `static` (în clase) [*](https://github.com/Ionnier/poo/tree/main/labs/L04#static)
+  - [x] 1+ atribute statice non-triviale 
+  - [x] 1+ funcții statice non-triviale
+- [x] excepții [*](https://github.com/Ionnier/poo/tree/main/labs/L04#exception-handling)
+  - porniți de la `std::exception`
+  - ilustrați propagarea excepțiilor
+  - ilustrati upcasting-ul în blocurile catch
+  - minim folosit într-un loc în care tratarea erorilor în modurile clasice este mai dificilă
+- [x] folosirea unei clase abstracte [*](https://github.com/Ionnier/poo/tree/main/labs/L04#clase-abstracte)
+- [x] clase template
+  - [x] crearea unei clase template [*](https://github.com/Ionnier/poo/tree/main/labs/L08)
+  - [x] 2 instanțieri ale acestei clase
+- [x] STL [*](https://github.com/Ionnier/poo/tree/main/labs/L07#stl)
+  - [x] utilizarea a două structuri (containere) diferite (vector, list sau orice alt container care e mai mult sau mai putin un array)
+  - [x] utilizarea a unui algoritm cu funcție lambda (de exemplu, sort, transform)
+-  [x] Design Patterns [*](https://github.com/Ionnier/poo/tree/main/labs/L08)
+  - [x] utilizarea a două șabloane de proiectare
 
-[x] programul nu are erori de compilare
+### Observații
 
-[x] fară variabile globale
+* Pot exista depunctări până la 2p pentru diferite aspecte precum:
+  - memory leak-uri
+  - nefolosirea destructorului virtual la nevoie
+  - abuzarea de diferite concepte (toate funcțiile declarate virtual)
+  - apelarea de funcții virtual în constructori
 
-[x] datele membre private(sau protected)
+* În general, acestea sunt prezente în [CppCoreGuideline](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md), dar nu e nevoie să parcurgeți documentul, doar să scrieți codul suficient de organizat
 
-[x] GitHub Actions trecute
-
-[x] commit-uri pe Git adecvate si punctuale
-
-[ ] folosirea a funcționalităților limbajului fără sens
-
-[ ] folosirea a funcționlităților limbajului cu scopul de a încălca "legal" o altă regulă  
-
-[ ] folosirea excesivă a claselor friend  
-
-[ ] folosirea excesviă a elementelor statice  
-
-[x] lipsa separarea implementarii de definitie  
-
-Cerințe
-pentru fiecare cerință (sau subcerință) neîndeplinită se scade 1 punct  
-
-[x] definirea a minim 2-3 ieararhii de clase care sa interactioneze in cadrul temei alese (fie prin compunere, agregare sau doar sa apeleze metodele celeilalte intr-un mod logic)  
-
-minim o clasa cu:
-
-[x] constructori de inițializare *
-
-[x] constructor supraîncărcat *
-
-[x] constructori de copiere *  
-
-[x] operator= de copiere *  
-
-[x] destructor *  
-
-[x] operator<< pentru afișare (std::ostream) *
-
-[x] operator>> pentru citire (std::istream) *
-
-[x] alt operator supraîncărcat ca funcție membră *
-
-[x] alt operator supraîncărcat ca funcție non-membră * - nu neaparat ca friend
-
-in derivate
-
-[x] implementarea funcționalităților alese prin upcast și downcast
-
-aceasta va fi făcută prin 2-3 metode specifice temei alese
-
-funcțiile pentru citire / afișare sau destructorul nu sunt incluse deși o să trebuiască să le implementați
-
-[x] apelarea constructorului din clasa de bază din constructori din derivate
-
-[x] suprascris cc/op= pentru copieri/atribuiri corecte
-
-[x] destructor virtual
-
-pentru celelalte clase se va definii doar ce e nevoie
-
-minim o ierarhie mai dezvoltata (cu 2-3 clase dintr-o clasa de baza)
-
-ierarhie de clasa se considera si daca exista doar o clasa de bază însă care nu moștenește dintr-o clasă din altă ierarhie
-
-[x] cât mai multe const *
-
-[x] funcții și atribute static (în clase) *
-
-[x] 1+ atribute statice non-triviale
-
-[x] 1+ funcții statice non-triviale
-
-[x] excepții *
-
-porniți de la std::exception
-
-ilustrați propagarea excepțiilor
-
-ilustrati upcasting-ul în blocurile catch
-
-minim folosit într-un loc în care tratarea erorilor în modurile clasice este mai dificilă  
-
-[x] folosirea unei clase abstracte *  
-
-[x] clase template  
-
-[x] crearea unei clase template *  
-
-[x] 2 instanțieri ale acestei clase  
-
-[x] STL *
-
-[x] utilizarea a două structuri (containere) diferite (vector, list sau orice alt container care e mai mult sau mai putin un array)
-
-[x] utilizarea a unui algoritm cu funcție lambda (de exemplu, sort, transform)
-
-[x] Design Patterns *
-
-[x] utilizarea a două șabloane de proiectare
-
-Observații
-Pot exista depunctări până la 2p pentru diferite aspecte precum:
-
-memory leak-uri
-
-nefolosirea destructorului virtual la nevoie
-
-abuzarea de diferite concepte (toate funcțiile declarate virtual)
-
-apelarea de funcții virtual în constructori
-
-În general, acestea sunt prezente în CppCoreGuideline, dar nu e nevoie să parcurgeți documentul, doar să scrieți codul suficient de organizat
-
-folderele build/ și install_dir/ sunt adăugate în fișierul .gitignore deoarece conțin fișiere generate și nu ne ajută să le versionăm.
+* folderele `build/` și `install_dir/` sunt adăugate în fișierul `.gitignore` deoarece
+conțin fișiere generate și nu ne ajută să le versionăm.
