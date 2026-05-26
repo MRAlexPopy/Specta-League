@@ -15,7 +15,7 @@ else()
 endif()
 
 
-add_executable(specta_league
+add_executable(oop
     main.cpp
     src/enemy.cpp
     src/enemyfactory.cpp
@@ -23,4 +23,10 @@ add_executable(specta_league
     src/strategy.cpp
 )
 
-target_include_directories(specta_league PRIVATE include)
+target_include_directories(oop PRIVATE include)
+
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/tastatura.txt")
+    file(COPY "${CMAKE_SOURCE_DIR}/tastatura.txt" DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+endif()
+file(WRITE "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/launcher.command" "#!/bin/bash\n./oop\n")
