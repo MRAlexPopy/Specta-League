@@ -1,6 +1,32 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Specta-League: joc RPG auto-battler in terminal
 
-### Folosiți template-ul corespunzător grupei voastre!
+Descriere
+
+Specta-League este un joc RPG de tip auto-battler / turn-based combat in terminal. Jucatorul gestioneaza un grup de eroi (Party), echipeaza arme si obiecte folosind un sistem de inventar si se lupta impotriva diferitilor inamici (ex: Dragoni, Monstri). Proiectul este construit pe conceptele fundamentale de Programare Orientata pe Obiecte (OOP), utilizand polimorfism, mostenire, exceptii si design pattern-uri pentru a crea un sistem de combat modular.
+Inspiratie: jocurile RPG clasice turn-based si auto-battlers.
+
+Caracteristici implementate
+
+sistem de combat pentru rezolvarea luptelor intre eroi si inamici, cu calcularea daunelor
+ierarhii de eroi si inamici: clase abstracte extinse prin derivate specifice (Warrior, Dragon)
+sistem de inventar template capabil sa stocheze si sa sorteze iteme
+design patterns: EnemyFactory (generare inamici), Strategy (decizii in lupta), CombatObserver (monitorizare evenimente)
+exceptii custom: erori specifice de logica tratate prin clase derivate din std::exception
+meniu in terminal pentru gestionarea actiunilor
+
+Cum se joaca
+
+Jocul se compileaza cu cmake -S . -B build && cmake --build build. Apoi rulezi ./build/oop.
+Tastezi optiunea numerica corespunzatoare din meniu si apesi Enter pentru a echipa eroi, a vizualiza inventarul sau a initia o lupta.
+
+Controls
+
+tastatura numerica pentru alegerea optiunii curente in meniu
+Enter confirma alegerea
+
+
+
+Resurse:
 
 | Laborant  | Link template                                |
 |-----------|----------------------------------------------|
