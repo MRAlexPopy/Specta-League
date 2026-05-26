@@ -120,7 +120,7 @@ private:
         }
     }
 
-    static void doAttack(Hero* hero, Enemy& enemy) {
+   static void doAttack(const Hero* hero, Enemy& enemy) {
         
         auto* skeleton = dynamic_cast<Skeleton*>(&enemy);
         int dmg = hero->attack();
@@ -169,7 +169,7 @@ private:
 
     void doEnemyTurn(Enemy& enemy) {
         
-        auto* dragon = dynamic_cast<Dragon*>(&enemy);
+        const auto* dragon = dynamic_cast<const Dragon*>(&enemy);
         if (dragon && dragon->isBreathCharged())
             std::cout << "\n  !! " << enemy.getName()
                       << " unleashes DRAGON BREATH!\n";
@@ -193,7 +193,7 @@ private:
         enemy.getState().atkDebuff = 0;
     }
 
-    bool resolveBattle(Enemy& enemy) {
+       bool resolveBattle(const Enemy& enemy) {
         if (!enemy.isAlive()) {
             std::cout << "\n  *** VICTORY! " << enemy.getName()
                       << " defeated! ***\n";
